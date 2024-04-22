@@ -1,0 +1,9 @@
+#pip install -r requirements.txt
+Flask
+pandas
+matplotlib
+nltk
+scipy
+wordcloud
+scikit-learn
+# any other libraries you might need

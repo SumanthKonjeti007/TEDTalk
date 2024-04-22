@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TED Talk Search</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1><span class="highlight">TED</span> Talk Search</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li class="current"><a href="/">Search</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="search-container">
+            <form action="/" method="post">
+                <input type="text" name="search_query" class="search-box" placeholder="Search TED Talks">
+                <button type="submit" class="button">Search</button>
+            </form>
+        </div>
+        {% if talks %}
+            <div class="results">
+                <h2>Results:</h2>
+                <div class="result-container">
+                    {% for talk in talks %}
+                        <div class="talk-result">
+                            <a href="{{ talk.url }}" target="_blank">
+                                <img src="{{ talk.thumbnail_url }}" alt="Talk thumbnail" class="talk-thumbnail">
+                                <h3>{{ talk.title }}</h3>
+                                <p class="speaker">by {{ talk.main_speaker }}</p>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
